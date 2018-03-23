@@ -1,0 +1,586 @@
+app/mailers/user_mailer.rb:    mail to: user.phone, subject: "Account activation"
+app/mailers/user_mailer.rb:    mail to: user.phone, subject: "Password reset"
+app/helpers/users_helper.rb:    gravatar_id = Digest::MD5::hexdigest(user.phone.downcase)
+app/models/user.rb:  before_save   :downcase_phone
+app/models/user.rb:  validates :phone, presence: true, length: { maximum: 10 },
+app/models/user.rb:  # Sends activation phone.
+app/models/user.rb:  def send_activation_phone
+app/models/user.rb:  # Sends password reset phone.
+app/models/user.rb:  def send_password_reset_phone
+app/models/user.rb:    # Converts phone to all lower-case.
+app/models/user.rb:    def downcase_phone
+app/models/user.rb:      self.phone = phone.downcase
+app/views/sessions/new.html.erb:      <%= f.text_field :phone, class: 'form-control' %>
+app/views/user_mailer/password_reset.html.erb:                                                      phone: @user.phone) %>
+app/views/user_mailer/password_reset.html.erb:If you did not request your password to be reset, please ignore this phone and 
+app/views/user_mailer/account_activation.html.erb:                                                    phone: @user.phone) %>
+app/views/user_mailer/password_reset.text.erb:<%= edit_password_reset_url(@user.reset_token, phone: @user.phone) %>
+app/views/user_mailer/password_reset.text.erb:If you did not request your password to be reset, please ignore this phone and 
+app/views/user_mailer/account_activation.text.erb:<%= edit_account_activation_url(@user.activation_token, phone: @user.phone) %>
+app/views/users/new.html.erb:      <%= f.text_field :phone, class: 'form-control' %>
+app/views/users/edit.html.erb:      <%= f.label :phone %>
+app/views/users/edit.html.erb:      <%= f.text_field :phone, class: 'form-control' %>
+app/views/users/edit.html.erb:      <a href="http://gravatar.com/phones" target=_blank>change</a>
+app/views/password_resets/new.html.erb:      <%= f.label :phone %>
+app/views/password_resets/new.html.erb:      <%= f.text_field :phone, class: 'form-control' %>
+app/views/password_resets/edit.html.erb:      <%= hidden_field_tag :phone, @user.phone %>
+app/controllers/users_controller.rb:      @user.send_activation_phone
+app/controllers/users_controller.rb:      flash[:info] = "Please check your phone to activate your account."
+app/controllers/users_controller.rb:      params.require(:user).permit(:name, :phone, :password,
+app/controllers/password_resets_controller.rb:    @user = User.find_by(phone: params[:password_reset][:phone].downcase)
+app/controllers/password_resets_controller.rb:      @user.send_password_reset_phone
+app/controllers/password_resets_controller.rb:      @user = User.find_by(phone: params[:phone])
+app/controllers/sessions_controller.rb:    user = User.find_by(phone: params[:session][:phone])
+app/controllers/sessions_controller.rb:        message += "Check your phone for the activation link."
+app/controllers/account_activations_controller.rb:    user = User.find_by(phone: params[:phone])
+a.txt:app/mailers/user_mailer.rb:    mail to: user.phone, subject: "Account activation"
+a.txt:app/mailers/user_mailer.rb:    mail to: user.phone, subject: "Password reset"
+a.txt:app/helpers/users_helper.rb:    gravatar_id = Digest::MD5::hexdigest(user.phone.downcase)
+a.txt:app/models/user.rb:  before_save   :downcase_phone
+a.txt:app/models/user.rb:  validates :phone, presence: true, length: { maximum: 10 },
+a.txt:app/models/user.rb:  # Sends activation phone.
+a.txt:app/models/user.rb:  def send_activation_phone
+a.txt:app/models/user.rb:  # Sends password reset phone.
+a.txt:app/models/user.rb:  def send_password_reset_phone
+a.txt:app/models/user.rb:    # Converts phone to all lower-case.
+a.txt:app/models/user.rb:    def downcase_phone
+a.txt:app/models/user.rb:      self.phone = phone.downcase
+a.txt:app/views/sessions/new.html.erb:      <%= f.text_field :phone, class: 'form-control' %>
+a.txt:app/views/user_mailer/password_reset.html.erb:                                                      phone: @user.phone) %>
+a.txt:app/views/user_mailer/password_reset.html.erb:If you did not request your password to be reset, please ignore this phone and 
+a.txt:app/views/user_mailer/account_activation.html.erb:                                                    phone: @user.phone) %>
+a.txt:app/views/user_mailer/password_reset.text.erb:<%= edit_password_reset_url(@user.reset_token, phone: @user.phone) %>
+a.txt:app/views/user_mailer/password_reset.text.erb:If you did not request your password to be reset, please ignore this phone and 
+a.txt:app/views/user_mailer/account_activation.text.erb:<%= edit_account_activation_url(@user.activation_token, phone: @user.phone) %>
+a.txt:app/views/users/new.html.erb:      <%= f.text_field :phone, class: 'form-control' %>
+a.txt:app/views/users/edit.html.erb:      <%= f.label :phone %>
+a.txt:app/views/users/edit.html.erb:      <%= f.text_field :phone, class: 'form-control' %>
+a.txt:app/views/users/edit.html.erb:      <a href="http://gravatar.com/phones" target=_blank>change</a>
+a.txt:app/views/password_resets/new.html.erb:      <%= f.label :phone %>
+a.txt:app/views/password_resets/new.html.erb:      <%= f.text_field :phone, class: 'form-control' %>
+a.txt:app/views/password_resets/edit.html.erb:      <%= hidden_field_tag :phone, @user.phone %>
+a.txt:app/controllers/users_controller.rb:      @user.send_activation_phone
+a.txt:app/controllers/users_controller.rb:      flash[:info] = "Please check your phone to activate your account."
+a.txt:app/controllers/users_controller.rb:      params.require(:user).permit(:name, :phone, :password,
+a.txt:app/controllers/password_resets_controller.rb:    @user = User.find_by(phone: params[:password_reset][:phone].downcase)
+a.txt:app/controllers/password_resets_controller.rb:      @user.send_password_reset_phone
+a.txt:app/controllers/password_resets_controller.rb:      @user = User.find_by(phone: params[:phone])
+a.txt:app/controllers/sessions_controller.rb:    user = User.find_by(phone: params[:session][:phone])
+a.txt:app/controllers/sessions_controller.rb:        message += "Check your phone for the activation link."
+a.txt:app/controllers/account_activations_controller.rb:    user = User.find_by(phone: params[:phone])
+a.txt:config/environments/test.rb:  # Tell Action Mailer not to deliver phones to the real world.
+a.txt:config/environments/test.rb:  # The :test delivery method accumulates sent phones in the
+a.txt:db/migrate/20141014205756_add_index_to_users_phone.rb:    add_index :users, :phone, unique: true
+a.txt:db/migrate/20141014183645_create_users.rb:      t.string :phone
+a.txt:db/seeds.rb:             phone: "example@railstutorial.org",
+a.txt:db/seeds.rb:  phone = "example-#{n+1}@railstutorial.org"
+a.txt:db/seeds.rb:               phone: phone,
+a.txt:db/schema.rb:    t.string   "phone"
+a.txt:db/schema.rb:  add_index "users", ["phone"], name: "index_users_on_phone", unique: true
+a.txt:db/data.csv:phone
+a.txt:log/test.log:  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "phone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" varchar, "remember_digest" varchar, "admin" boolean DEFAULT 'f', "activation_digest" varchar, "activated" boolean DEFAULT 'f', "activated_at" datetime, "reset_digest" varchar, "reset_sent_at" datetime) [0m
+a.txt:log/test.log:  [1m[35m (5.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_phone" ON "users" ("phone")
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "admin", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Michael Example', 'michael@example.com', '$2a$04$fdAWnSF5FNz.fL14M9J6nuM9em1lYw1ATAixUFjQc/z2PV/qg6Jki', 't', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 762146111)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Sterling Archer', 'duchess@example.gov', '$2a$04$6uwzr5PNF2wMt7OEUNJ/r.HdKxL6ESabuaVzPUR4qJq5mXxvpS9EC', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 950961012)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Lana Kane', 'hands@example.gov', '$2a$04$58L2Cm9eVjBpWtC2U7Qy3ev9TVp21oCIWqS8x.stKuXFhkvDWcv0S', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 409608538)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Mallory Archer', 'boss@example.gov', '$2a$04$PVXlq7Rj6dbmLgwufBuUz.mey9jUHBbUTLBpP6f22UaB.6B43bOZG', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 785162917)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 0', 'user-0@example.com', '$2a$04$yKcUTG3F4hl1MAHVSYumHec36IDe45g5UOUkh/OQ8KFLbXdRyQ5jS', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 338193910)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 1', 'user-1@example.com', '$2a$04$vfPEBqbEnrq32G6t9m855uOmAcYw57z0CXbyHjufkzowSRIZnUMoW', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 590306657)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 2', 'user-2@example.com', '$2a$04$9CTtB0Gy1Yso81PYUi.wPe3RZ72RRDI6MrRXel792p81HUD8aRRW.', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 975572189)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 3', 'user-3@example.com', '$2a$04$992GDxuL05t00En5WjtcMuUQwnD.CKk3JJqr9AGLkiZ9IzfygZ3Gq', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 220281934)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 4', 'user-4@example.com', '$2a$04$VAAptRjwzKwF6DduXX1T.eAMeHCA8exoxHgS2G4XPQEb9m7naiF9W', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 323332591)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 5', 'user-5@example.com', '$2a$04$ZPUmOeJRzfW7iD.kui2Y1OIQQWg0bbO01wUvzDpMnJmFBg0SVg6eO', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 608344442)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 6', 'user-6@example.com', '$2a$04$sCarQ9rHzS6sjNPSGwKMPOsItJRiqxTi/GvHEyCkcYtp3ngUaCtqi', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 1028376774)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 7', 'user-7@example.com', '$2a$04$gB76WCv6cOmlDu9UZEJAWeqMaleRQinexLQXKkGqSa8ZiVfagL2Zu', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 172816471)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 8', 'user-8@example.com', '$2a$04$Ec9bOXp.OdC638TA4l4b4OS4NzlDs83zyTQo5dUetkYyndA2BVijW', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 452191684)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 9', 'user-9@example.com', '$2a$04$jHNsK3rlpESNjWOLHCQZIeKuFa8RJUXRoI8XHgsQPRrFj9PHWkL.S', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 771020115)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 10', 'user-10@example.com', '$2a$04$k8yroBcwg1e8L0M0nOHje.RdNEW.Sef6yzJe.pcnED0UDRIcTHa86', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 956993830)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 11', 'user-11@example.com', '$2a$04$FanH3vPusAFJYWIAR0xDTugEf/edjpm/1uL5n6wUYuGqb/tIP57Gm', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 235774389)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 12', 'user-12@example.com', '$2a$04$1XXaYenDa/JeBv3F.u6oPOiOehQQ/7.WO9GJIDYcL15LzKDPogCTa', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 386199561)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 13', 'user-13@example.com', '$2a$04$w5cvuN3gEx6hTIXNM45/Weazkzk5.g1S5fwAGI3MVNqA2tseN9e/i', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 537116830)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 14', 'user-14@example.com', '$2a$04$0H6pA9lg39P6zkiPyQA1aegkaFei/uMcPeHcWbeDMBrrG9qri8CS2', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 1046959423)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 15', 'user-15@example.com', '$2a$04$xAYh85y2egKQaeQ5WGvxeuJiTNkT2TIjInzZLU1NYS338Zk.H3nCG', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 157312430)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 16', 'user-16@example.com', '$2a$04$zj.CLgZT.C3wvX4MS3eM1eo8UZji/kOwQGfJ98qBt6LikCMGp.Uce', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 275330066)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 17', 'user-17@example.com', '$2a$04$CdssKw/XxlHZRUHGNHXMQuI4PSKQyJ172hSIZk1B07DebHIfPDdy.', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 661521543)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 18', 'user-18@example.com', '$2a$04$3EI4WiPGEyY8E.28r2IOV.MSMegSG8MpxqMPh53nA3rN45M1sUd1a', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 936450328)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 19', 'user-19@example.com', '$2a$04$0dyVt4oWxER7sAcSNruFNur/okjrNaZRTFtuPDgWwFAVk6dvKRc9y', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 14035331)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 20', 'user-20@example.com', '$2a$04$K0Re6aXDdPRXhPzDdmjve.FEgeUo88cU.mdr78iJvzRgkOb6hG77y', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 304595689)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 21', 'user-21@example.com', '$2a$04$Q1gGVcEKq6QSGRElTjk6I.k5ctuLTW1vbpq.n3WQjYZkupzE2EJIi', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 622916212)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 22', 'user-22@example.com', '$2a$04$7GuncN27AwjG6ws4ajkwgew82PrzaXb1RPE190YvUmbkgcnfoTUNG', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 1009361868)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 23', 'user-23@example.com', '$2a$04$I2l1ci5UKdCsJqidMwulwurKpcyomb4ml3HO7F4McQnBddSBPDIMu', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 187601757)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 24', 'user-24@example.com', '$2a$04$yGoBXd7ndxvBNbDg3ZaTMe8Et2DLQ7N4NldYh0igE0Pnijlb68.Cm', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 357172992)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 25', 'user-25@example.com', '$2a$04$N9W9SwEEvkphQ/peTSVmmO1gx7Lszubh6/6FSSfpo8GL3xWveDZb6', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 575485547)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 26', 'user-26@example.com', '$2a$04$HuDklY4gAIyZhPBBucl12OZlRq3Wd.Td5Oaf.mzarzSICCkEUTb7y', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 994338771)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 27', 'user-27@example.com', '$2a$04$fM87skm1opuHtgwlFW8SYO/wS4Lp2/WKQaXqeZQrJYcKE5RGwFIme', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 205739844)[0m
+a.txt:log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 28', 'user-28@example.com', '$2a$04$OoLqH.irYLgrjaX3bb61GugKrT1AtIZEY82bu3PEcBvRu7x7CJN9a', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 486296279)
+a.txt:log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 29', 'user-29@example.com', '$2a$04$SAeHnb724DJ/awMlMRkjVuOKfK05BXfN2Dh3ozrSBgZk64HxAWdCe', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 737901126)[0m
+a.txt:log/test.log:  Parameters: {"user"=>{"name"=>"Michael Example", "phone"=>"michael@example.com"}, "id"=>"762146111"}
+a.txt:log/test.log:  Parameters: {"user"=>{"name"=>"Michael Example", "phone"=>"michael@example.com"}, "id"=>"762146111"}
+a.txt:log/test.log:UserTest: test_phone_address_should_be_unique
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1[0m
+a.txt:log/test.log:  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Example User"], ["phone", "user@example.com"], ["password_digest", "$2a$04$eRU9v/mL8W8lJKjFDPev6.RfM6Z1kZc7QM5eAox2uM/JURQ3OrM5K"], ["created_at", "2018-03-20 18:37:39.876196"], ["updated_at", "2018-03-20 18:37:39.876196"], ["activation_digest", "$2a$04$B7rnL3WU.rq.4DQxZACPO.RmJVqVuH053CDhdlW7TjiXQcta3drR."]]
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('USER@EXAMPLE.COM') LIMIT 1
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1[0m
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1
+a.txt:log/test.log:UserTest: test_phone_should_not_be_too_long
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com') LIMIT 1
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1[0m
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1
+a.txt:log/test.log:  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Example User"], ["phone", "user@example.com"], ["password_digest", "$2a$04$UEg6ZKnxIvdhBtDR3SN8peqrclO2Zj1xLQ6XDbGt8wUyNCrBcYWOu"], ["created_at", "2018-03-20 18:37:39.965848"], ["updated_at", "2018-03-20 18:37:39.965848"], ["activation_digest", "$2a$04$IW0tv017Jjd6/l8neOeU0eMOAoy8K.n0UEdJ17sD2NlPWH6hSvDlC"]]
+a.txt:log/test.log:UserTest: test_phone_should_be_present
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('     ') LIMIT 1[0m
+a.txt:log/test.log:UserTest: test_phone_validation_should_reject_invalid_addresses
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example,com') LIMIT 1
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user_at_foo.org') LIMIT 1[0m
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user.name@example.') LIMIT 1
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('foo@bar_baz.com') LIMIT 1[0m
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('foo@bar+baz.com') LIMIT 1
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1[0m
+a.txt:log/test.log:UserTest: test_phone_validation_should_accept_valid_addresses
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('USER@foo.COM') LIMIT 1[0m
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('A_US-ER@foo.bar.org') LIMIT 1
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('first.last@foo.jp') LIMIT 1[0m
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('alice+bob@baz.cn') LIMIT 1
+a.txt:log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", ""]]
+a.txt:log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:http://example.com/password_resets/mirwe3OF9Ek1aQVjLLyS-A/edit?phone=michael%40example.com
+a.txt:log/test.log:If you did not request your password to be reset, please ignore this phone and 
+a.txt:log/test.log:<a href="http://example.com/password_resets/mirwe3OF9Ek1aQVjLLyS-A/edit?phone=michael%40example.com">Reset password</a>
+a.txt:log/test.log:If you did not request your password to be reset, please ignore this phone and 
+a.txt:log/test.log:Started GET "/password_resets/mirwe3OF9Ek1aQVjLLyS-A/edit?phone=" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+a.txt:log/test.log:  Parameters: {"phone"=>"", "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+a.txt:log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", ""]]
+a.txt:log/test.log:Started GET "/password_resets/mirwe3OF9Ek1aQVjLLyS-A/edit?phone=michael%40example.com" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+a.txt:log/test.log:  Parameters: {"phone"=>"michael@example.com", "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+a.txt:log/test.log:  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:Started GET "/password_resets/wrong%20token/edit?phone=michael%40example.com" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+a.txt:log/test.log:  Parameters: {"phone"=>"michael@example.com", "id"=>"wrong token"}
+a.txt:log/test.log:  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:Started GET "/password_resets/mirwe3OF9Ek1aQVjLLyS-A/edit?phone=michael%40example.com" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+a.txt:log/test.log:  Parameters: {"phone"=>"michael@example.com", "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+a.txt:log/test.log:  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"phone"=>"michael@example.com", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+a.txt:log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE (LOWER("users"."phone") = LOWER('michael@example.com') AND "users"."id" != 762146111) LIMIT 1[0m
+a.txt:log/test.log:  Parameters: {"phone"=>"michael@example.com", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+a.txt:log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"phone"=>"michael@example.com", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+a.txt:log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE (LOWER("users"."phone") = LOWER('michael@example.com') AND "users"."id" != 762146111) LIMIT 1
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"", "password"=>"[FILTERED]"}}
+a.txt:log/test.log:  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", ""]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]"}}
+a.txt:log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}}
+a.txt:log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"duchess@example.gov", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "duchess@example.gov"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"user"=>{"name"=>"Foo Bar", "phone"=>"foo@bar.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"762146111"}
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE (LOWER("users"."phone") = LOWER('foo@bar.com') AND "users"."id" != 762146111) LIMIT 1
+a.txt:log/test.log:  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "name" = ?, "phone" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["name", "Foo Bar"], ["phone", "foo@bar.com"], ["updated_at", "2018-03-20 18:37:40.707053"], ["id", 762146111]]
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+a.txt:log/test.log:  Parameters: {"user"=>{"name"=>"", "phone"=>"user@invalid", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"762146111"}
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE (LOWER("users"."phone") = LOWER('user@invalid') AND "users"."id" != 762146111) LIMIT 1
+a.txt:log/test.log:  Parameters: {"user"=>{"name"=>"", "phone"=>"user@invalid", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+a.txt:log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@invalid') LIMIT 1
+a.txt:log/test.log:  Parameters: {"user"=>{"name"=>"Example User", "phone"=>"user@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+a.txt:log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1[0m
+a.txt:log/test.log:  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Example User"], ["phone", "user@example.com"], ["password_digest", "$2a$04$7nw9J.wniTMkrPNaXKiGmuNPtAHeHIPNtbOMEFWKZT2vlLmJNB3/K"], ["created_at", "2018-03-20 18:37:40.765852"], ["updated_at", "2018-03-20 18:37:40.765852"], ["activation_digest", "$2a$04$TBj0aN/v6yOOifhjbgl.2OYR5JBdFvioqab/H8qbwjNMStLeTy31."]]
+a.txt:log/test.log:http://example.com/account_activations/MTcREFc2GSlCSwO0JnC11Q/edit?phone=user%40example.com
+a.txt:log/test.log:<a href="http://example.com/account_activations/MTcREFc2GSlCSwO0JnC11Q/edit?phone=user%40example.com">Activate</a>
+a.txt:log/test.log:  Parameters: {"session"=>{"phone"=>"user@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+a.txt:log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "user@example.com"]]
+a.txt:log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" IS NULL LIMIT 1
+a.txt:log/test.log:Started GET "/account_activations/MTcREFc2GSlCSwO0JnC11Q/edit?phone=wrong" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+a.txt:log/test.log:  Parameters: {"phone"=>"wrong", "id"=>"MTcREFc2GSlCSwO0JnC11Q"}
+a.txt:log/test.log:  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "wrong"]]
+a.txt:log/test.log:Started GET "/account_activations/MTcREFc2GSlCSwO0JnC11Q/edit?phone=user%40example.com" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+a.txt:log/test.log:  Parameters: {"phone"=>"user@example.com", "id"=>"MTcREFc2GSlCSwO0JnC11Q"}
+a.txt:log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "user@example.com"]]
+a.txt:log/development.log:  [1m[35m (0.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "phone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+a.txt:log/development.log:  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_phone" ON "users" ("phone")
+a.txt:log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+a.txt:log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sr8My9Sn6aGes9OL5709/DPn+IiTodc5t1qlzqq9RbdgVCboIKp88QaNRCYSN0uEGrFBjIhnUib1QWTehZxj4w==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"abhineetmnnit26@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('abhineetmnnit26@gmail.com') LIMIT 1[0m
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UwynwwZoaL+e3JHiEl0wrI97p1TyW7AWYPajSKhJo2KB543g8mX97wbiBk/n10bUpi0eUOmdNQki7WJYh2iFNg==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"abhineetmnnit26@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('abhineetmnnit26@gmail.com') LIMIT 1
+a.txt:log/development.log:  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "abhineet bhojak"], ["phone", "abhineetmnnit26@gmail.com"], ["password_digest", "$2a$10$KzRdMUZRuewC0ltBS91cKuqtFiAj1Sb2lWVY6hUTntLp1SZ2Rom.2"], ["created_at", "2018-03-20 19:27:40.570282"], ["updated_at", "2018-03-20 19:27:40.570282"], ["activation_digest", "$2a$10$CwXa8ecx.7tgC9hzzueAMOr3zZDjVH1sPZ5CXzUPyT.a5frvU/by."]]
+a.txt:log/development.log:https://rails-tutorial-c9-mhartl.c9.io/account_activations/gvlU9rKdLepq6bwugDAMcg/edit?phone=abhineetmnnit26%40gmail.com
+a.txt:log/development.log:<a href="https://rails-tutorial-c9-mhartl.c9.io/account_activations/gvlU9rKdLepq6bwugDAMcg/edit?phone=abhineetmnnit26%40gmail.com">Activate</a>
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1u6it4KdbedlbEuFUg3u8PCQjQPu4NqBOu8QNrNC2UkEBYiUdpD4t/1S3Cinh5iI2cY0B/UmX5549NEmnGP/HQ==", "session"=>{"phone"=>"abhineetmnnit26@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+a.txt:log/development.log:  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "abhineetmnnit26@gmail.com"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hV/lTtlx0ONbrkvliD6uYL4CzDNk2JXFda5ybpX8AxVXtM9tLXxFs8OQ3Eh9tNgYl1R1N38eENo3tbN+ut0lQQ==", "user"=>{"name"=>"a", "phone"=>"a@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('a@gmail.com') LIMIT 1
+a.txt:log/development.log:  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "a"], ["phone", "a@gmail.com"], ["password_digest", "$2a$10$ztCRYYBsmtDMFEHk8vNRq.8/8l5h/SscU7ipCwt8WSqxpII0zex8S"], ["created_at", "2018-03-20 20:10:12.393484"], ["updated_at", "2018-03-20 20:10:12.393484"], ["activation_digest", "$2a$10$NaorbayEOT9s0F.PjK8tFOnAvkcFW6spGJmHUTsOY.8toD1zuk7xa"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+PPjTLu1khT4Z7fNiBS/xU4PkpVRV8HedUIPK0dWBOUqGMlvT7gHRGBZIGB9nsm9Z1krkUqRRME3Wc47aHcisQ==", "session"=>{"phone"=>"a@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+a.txt:log/development.log:  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "a@gmail.com"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7ymNds2wjaTYB6PcCEl5SFHwLFMFQQrEba97Q+CtdOM9wqdVOb0Y9EA5NHH9ww8weKaVVx6Hj9svtLpTz4xStw==", "session"=>{"phone"=>"abhineetmnnit26@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+a.txt:log/development.log:  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "abhineetmnnit26@gmail.com"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yVmQYNZZJ8J0O7c11of1PZH+4970YPDnYqv4+MEbQzYbsrpDIlSykuwFIJgjDYNFuKha2u+mdfggsDno7jplYg==", "session"=>{"phone"=>"abhineet.bhojak@tamu.edu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+a.txt:log/development.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "abhineet.bhojak@tamu.edu"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oJ4EwzStlefuVxI+Zc8KJ6aZt7yW8ZuHyDkTKPI7EhFydS7gwKAAt3ZphZOQRXxfj88OuI03HpiKItI43Ro0RQ==", "user"=>{"name"=>"Sheena Goel", "phone"=>"shinygoyal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('shinygoyal@gmail.com') LIMIT 1[0m
+a.txt:log/development.log:  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Sheena Goel"], ["phone", "shinygoyal@gmail.com"], ["password_digest", "$2a$10$lV2DXf50B.wQ52cr1I.p3.dmKn/qwt1w.xek942buXUcCLbEB65ui"], ["created_at", "2018-03-21 22:10:52.321026"], ["updated_at", "2018-03-21 22:10:52.321026"], ["activation_digest", "$2a$10$yxrqye5EaDtIabx/OcmrXOUe/z7nN15LGM0sgeADav1sbQXKVMDMC"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mIwnHz0WKTzaptRNht+vzzYeXN52Y3CD5BlTr1/UukxKZw08yRu8bEKYQ+BzVdm3H0jl2m2l9ZymApK/cPWcGA==", "session"=>{"phone"=>"shinygoyal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+a.txt:log/development.log:  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "shinygoyal@gmail.com"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c9aBOQN5umt/xGFty+pdnQVvYCXRnKiUyQ3n50z5cr+hPasa93QvO+f69sA+YCvlLDnZIcpaLYuLFib3Y9hU6w==", "session"=>{"phone"=>"shinygoyal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+a.txt:log/development.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "shinygoyal@gmail.com"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hmZ+I3QERDPk6iKU8f0fYgRpDdtkcrG4Vof8aZqD35lUjVQAgAnRY3zUtTkEd2kaLT+033+0NKcUnD15taL5zQ==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('') LIMIT 1[0m
+a.txt:log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+a.txt:log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hqeiILpjbq8FiMn+TkHdvLWdR+bxSBRnQyS5LgFneK9UTIgDTm77/522XlO7y6vEnMv+4uqOkXgBP3g+LkZe+w==", "user"=>{"name"=>"a", "phone"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('') LIMIT 1[0m
+a.txt:log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+a.txt:log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Zoi4lGJyX8eq70GaxDKu+QW9gX0LwRn0zABIVacCeha0Y5K3ln/KlzLR1jcxuNiBLOs4eRAHnOuOG4lFiCNcQg==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"1234552343@gmail.cpm", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('1234552343@gmail.cpm') LIMIT 1[0m
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FvZR+HnlE8X+lvhGfxWI7pYKCo1TSPOYoX6U3vFct2rEHXvbjeiGlWaob+uKn/6Wv1yziUiOdofjZVXO3n2RPg==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"12333@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('12333@gmail.com') LIMIT 1[0m
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/mje7i7Lz3RVMDrRpx+kbsNpEQnzKtNkEfhNn17zvRUsg/TN2sZaJM0OrXxSldIW6j+oDejsVntT44yPcdKbQQ==", "user"=>{"name"=>"rsjgj", "phone"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('') LIMIT 1[0m
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7C2bBv4/MF0RW05EftvpDniAYxIkonOaq8GOKVmPPjU+xrElCjKlDYll2emLUZ92UdbaFj9k9oXp2k85dq4YYQ==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"121111111", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('121111111') LIMIT 1[0m
+a.txt:log/development.log:  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "abhineet bhojak"], ["phone", "121111111"], ["password_digest", "$2a$10$tjdYmtuJ/tJtvY50P9G5.u4N8wWLy8iB/KVZVgBOIW4oMUsyXrQZW"], ["created_at", "2018-03-23 17:37:02.272434"], ["updated_at", "2018-03-23 17:37:02.272434"], ["activation_digest", "$2a$10$1TJAeJedbdsxf.KrvJIWiOXJDmCXQuOdTl8u8Qb2S0PxDE..FnLHG"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bI1AKkLICKpVCiH4hHq2+54Ktsh2heSE0b9PxjezyTm+ZmoJtsWd+s00tlVx8MCDt1wPzG1DYZuTpI7WGJLvbQ==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"1234567890", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('1234567890') LIMIT 1[0m
+a.txt:log/development.log:  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "abhineet bhojak"], ["phone", "1234567890"], ["password_digest", "$2a$10$bmF7jx3jnylHjsCLHryaneetbBtP3HZXAr6OeJRZPdyYVnnacD3KC"], ["created_at", "2018-03-23 17:37:49.502660"], ["updated_at", "2018-03-23 17:37:49.502660"], ["activation_digest", "$2a$10$x25b0fsT2ObkRu5bm4QVbe2ard6wwFXBuqb958TVTuwM/w/hVpubK"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2PV1NKSh9cLq70bBdMRobPWVYkbeZzQXAmsdY+9+X4gKHl8XUKxgknLR0WyBTh4U3MPbQsWhsQhAcNxzwF953A==", "session"=>{"phone"=>"1234567890", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+a.txt:log/development.log:  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "1234567890"]]
+a.txt:log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eApcC+s1RJU3DIqHJY84ZMq7E3zUE/g+i0pyk0lb2gOq4XYoHzjRxa8yHSrQBU4c4+2qeM/VfSHJUbODZnr8Vw==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"12333@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+a.txt:log/development.log:  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('12333@gmail.com') LIMIT 1
+a.txt:test/test_helper.rb:      post login_path, session: { phone:       user.phone,
+a.txt:test/mailers/previews/user_mailer_preview.rb:# Preview all phones at http://localhost:3000/rails/mailers/user_mailer
+a.txt:test/mailers/previews/user_mailer_preview.rb:  # Preview this phone at http://localhost:3000/rails/mailers/user_mailer/account_activation
+a.txt:test/mailers/previews/user_mailer_preview.rb:  # Preview this phone at http://localhost:3000/rails/mailers/user_mailer/password_reset
+a.txt:test/mailers/user_mailer_test.rb:    assert_equal [user.phone], mail.to
+a.txt:test/mailers/user_mailer_test.rb:    assert_match CGI::escape(user.phone), mail.body.encoded
+a.txt:test/mailers/user_mailer_test.rb:    assert_equal [user.phone], mail.to
+a.txt:test/mailers/user_mailer_test.rb:    assert_match CGI::escape(user.phone), mail.body.encoded
+a.txt:test/models/user_test.rb:    @user = User.new(name: "Example User", phone: "user@example.com",
+a.txt:test/models/user_test.rb:  test "phone should be present" do
+a.txt:test/models/user_test.rb:    @user.phone = "     "
+a.txt:test/models/user_test.rb:  test "phone should not be too long" do
+a.txt:test/models/user_test.rb:    @user.phone = "a" * 244 + "@example.com"
+a.txt:test/models/user_test.rb:  test "phone validation should accept valid addresses" do
+a.txt:test/models/user_test.rb:      @user.phone = valid_address
+a.txt:test/models/user_test.rb:  test "phone validation should reject invalid addresses" do
+a.txt:test/models/user_test.rb:      @user.phone = invalid_address
+a.txt:test/models/user_test.rb:  test "phone address should be unique" do
+a.txt:test/models/user_test.rb:    duplicate_user.phone = @user.phone.upcase
+a.txt:test/controllers/users_controller_test.rb:    patch :update, id: @user, user: { name: @user.name, phone: @user.phone }
+a.txt:test/controllers/users_controller_test.rb:    patch :update, id: @user, user: { name: @user.name, phone: @user.phone }
+a.txt:test/fixtures/users.yml:  phone: michael@example.com
+a.txt:test/fixtures/users.yml:  phone: duchess@example.gov
+a.txt:test/fixtures/users.yml:  phone: hands@example.gov
+a.txt:test/fixtures/users.yml:  phone: boss@example.gov
+a.txt:test/fixtures/users.yml:  phone: <%= "user-#{n}@example.com" %>
+a.txt:test/integration/users_login_test.rb:    post login_path, session: { phone: "", password: "" }
+a.txt:test/integration/users_login_test.rb:    post login_path, session: { phone: @user.phone, password: 'password' }
+a.txt:test/integration/password_resets_test.rb:    # Invalid phone
+a.txt:test/integration/password_resets_test.rb:    post password_resets_path, password_reset: { phone: "" }
+a.txt:test/integration/password_resets_test.rb:    # Valid phone
+a.txt:test/integration/password_resets_test.rb:    post password_resets_path, password_reset: { phone: @user.phone }
+a.txt:test/integration/password_resets_test.rb:    # Wrong phone
+a.txt:test/integration/password_resets_test.rb:    get edit_password_reset_path(user.reset_token, phone: "")
+a.txt:test/integration/password_resets_test.rb:    get edit_password_reset_path(user.reset_token, phone: user.phone)
+a.txt:test/integration/password_resets_test.rb:    # Right phone, wrong token
+a.txt:test/integration/password_resets_test.rb:    get edit_password_reset_path('wrong token', phone: user.phone)
+a.txt:test/integration/password_resets_test.rb:    # Right phone, right token
+a.txt:test/integration/password_resets_test.rb:    get edit_password_reset_path(user.reset_token, phone: user.phone)
+a.txt:test/integration/password_resets_test.rb:    assert_select "input[name=phone][type=hidden][value=?]", user.phone
+a.txt:test/integration/password_resets_test.rb:          phone: user.phone,
+a.txt:test/integration/password_resets_test.rb:          phone: user.phone,
+a.txt:test/integration/password_resets_test.rb:          phone: user.phone,
+a.txt:test/integration/users_signup_test.rb:                               phone: "user@invalid",
+a.txt:test/integration/users_signup_test.rb:                               phone: "user@example.com",
+a.txt:test/integration/users_signup_test.rb:    get edit_account_activation_path(user.activation_token, phone: 'wrong')
+a.txt:test/integration/users_signup_test.rb:    get edit_account_activation_path(user.activation_token, phone: user.phone)
+a.txt:test/integration/users_edit_test.rb:                                    phone: "user@invalid",
+a.txt:test/integration/users_edit_test.rb:    phone = "foo@bar.com"
+a.txt:test/integration/users_edit_test.rb:                                    phone: phone,
+a.txt:test/integration/users_edit_test.rb:    assert_equal phone, @user.phone
+config/environments/test.rb:  # Tell Action Mailer not to deliver phones to the real world.
+config/environments/test.rb:  # The :test delivery method accumulates sent phones in the
+db/migrate/20141014205756_add_index_to_users_phone.rb:    add_index :users, :phone, unique: true
+db/migrate/20141014183645_create_users.rb:      t.string :phone
+db/seeds.rb:             phone: "example@railstutorial.org",
+db/seeds.rb:  phone = "example-#{n+1}@railstutorial.org"
+db/seeds.rb:               phone: phone,
+db/schema.rb:    t.string   "phone"
+db/schema.rb:  add_index "users", ["phone"], name: "index_users_on_phone", unique: true
+db/data.csv:phone
+Binary file db/development.sqlite3 matches
+Binary file db/test.sqlite3 matches
+log/test.log:  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "phone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" varchar, "remember_digest" varchar, "admin" boolean DEFAULT 'f', "activation_digest" varchar, "activated" boolean DEFAULT 'f', "activated_at" datetime, "reset_digest" varchar, "reset_sent_at" datetime) [0m
+log/test.log:  [1m[35m (5.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_phone" ON "users" ("phone")
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "admin", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Michael Example', 'michael@example.com', '$2a$04$fdAWnSF5FNz.fL14M9J6nuM9em1lYw1ATAixUFjQc/z2PV/qg6Jki', 't', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 762146111)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Sterling Archer', 'duchess@example.gov', '$2a$04$6uwzr5PNF2wMt7OEUNJ/r.HdKxL6ESabuaVzPUR4qJq5mXxvpS9EC', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 950961012)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Lana Kane', 'hands@example.gov', '$2a$04$58L2Cm9eVjBpWtC2U7Qy3ev9TVp21oCIWqS8x.stKuXFhkvDWcv0S', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 409608538)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Mallory Archer', 'boss@example.gov', '$2a$04$PVXlq7Rj6dbmLgwufBuUz.mey9jUHBbUTLBpP6f22UaB.6B43bOZG', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 785162917)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 0', 'user-0@example.com', '$2a$04$yKcUTG3F4hl1MAHVSYumHec36IDe45g5UOUkh/OQ8KFLbXdRyQ5jS', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 338193910)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 1', 'user-1@example.com', '$2a$04$vfPEBqbEnrq32G6t9m855uOmAcYw57z0CXbyHjufkzowSRIZnUMoW', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 590306657)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 2', 'user-2@example.com', '$2a$04$9CTtB0Gy1Yso81PYUi.wPe3RZ72RRDI6MrRXel792p81HUD8aRRW.', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 975572189)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 3', 'user-3@example.com', '$2a$04$992GDxuL05t00En5WjtcMuUQwnD.CKk3JJqr9AGLkiZ9IzfygZ3Gq', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 220281934)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 4', 'user-4@example.com', '$2a$04$VAAptRjwzKwF6DduXX1T.eAMeHCA8exoxHgS2G4XPQEb9m7naiF9W', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 323332591)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 5', 'user-5@example.com', '$2a$04$ZPUmOeJRzfW7iD.kui2Y1OIQQWg0bbO01wUvzDpMnJmFBg0SVg6eO', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 608344442)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 6', 'user-6@example.com', '$2a$04$sCarQ9rHzS6sjNPSGwKMPOsItJRiqxTi/GvHEyCkcYtp3ngUaCtqi', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 1028376774)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 7', 'user-7@example.com', '$2a$04$gB76WCv6cOmlDu9UZEJAWeqMaleRQinexLQXKkGqSa8ZiVfagL2Zu', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 172816471)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 8', 'user-8@example.com', '$2a$04$Ec9bOXp.OdC638TA4l4b4OS4NzlDs83zyTQo5dUetkYyndA2BVijW', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 452191684)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 9', 'user-9@example.com', '$2a$04$jHNsK3rlpESNjWOLHCQZIeKuFa8RJUXRoI8XHgsQPRrFj9PHWkL.S', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 771020115)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 10', 'user-10@example.com', '$2a$04$k8yroBcwg1e8L0M0nOHje.RdNEW.Sef6yzJe.pcnED0UDRIcTHa86', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 956993830)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 11', 'user-11@example.com', '$2a$04$FanH3vPusAFJYWIAR0xDTugEf/edjpm/1uL5n6wUYuGqb/tIP57Gm', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 235774389)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 12', 'user-12@example.com', '$2a$04$1XXaYenDa/JeBv3F.u6oPOiOehQQ/7.WO9GJIDYcL15LzKDPogCTa', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 386199561)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 13', 'user-13@example.com', '$2a$04$w5cvuN3gEx6hTIXNM45/Weazkzk5.g1S5fwAGI3MVNqA2tseN9e/i', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 537116830)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 14', 'user-14@example.com', '$2a$04$0H6pA9lg39P6zkiPyQA1aegkaFei/uMcPeHcWbeDMBrrG9qri8CS2', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 1046959423)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 15', 'user-15@example.com', '$2a$04$xAYh85y2egKQaeQ5WGvxeuJiTNkT2TIjInzZLU1NYS338Zk.H3nCG', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 157312430)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 16', 'user-16@example.com', '$2a$04$zj.CLgZT.C3wvX4MS3eM1eo8UZji/kOwQGfJ98qBt6LikCMGp.Uce', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 275330066)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 17', 'user-17@example.com', '$2a$04$CdssKw/XxlHZRUHGNHXMQuI4PSKQyJ172hSIZk1B07DebHIfPDdy.', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 661521543)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 18', 'user-18@example.com', '$2a$04$3EI4WiPGEyY8E.28r2IOV.MSMegSG8MpxqMPh53nA3rN45M1sUd1a', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 936450328)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 19', 'user-19@example.com', '$2a$04$0dyVt4oWxER7sAcSNruFNur/okjrNaZRTFtuPDgWwFAVk6dvKRc9y', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 14035331)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 20', 'user-20@example.com', '$2a$04$K0Re6aXDdPRXhPzDdmjve.FEgeUo88cU.mdr78iJvzRgkOb6hG77y', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 304595689)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 21', 'user-21@example.com', '$2a$04$Q1gGVcEKq6QSGRElTjk6I.k5ctuLTW1vbpq.n3WQjYZkupzE2EJIi', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 622916212)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 22', 'user-22@example.com', '$2a$04$7GuncN27AwjG6ws4ajkwgew82PrzaXb1RPE190YvUmbkgcnfoTUNG', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 1009361868)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 23', 'user-23@example.com', '$2a$04$I2l1ci5UKdCsJqidMwulwurKpcyomb4ml3HO7F4McQnBddSBPDIMu', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 187601757)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 24', 'user-24@example.com', '$2a$04$yGoBXd7ndxvBNbDg3ZaTMe8Et2DLQ7N4NldYh0igE0Pnijlb68.Cm', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 357172992)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 25', 'user-25@example.com', '$2a$04$N9W9SwEEvkphQ/peTSVmmO1gx7Lszubh6/6FSSfpo8GL3xWveDZb6', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 575485547)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 26', 'user-26@example.com', '$2a$04$HuDklY4gAIyZhPBBucl12OZlRq3Wd.Td5Oaf.mzarzSICCkEUTb7y', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 994338771)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 27', 'user-27@example.com', '$2a$04$fM87skm1opuHtgwlFW8SYO/wS4Lp2/WKQaXqeZQrJYcKE5RGwFIme', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 205739844)[0m
+log/test.log:  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 28', 'user-28@example.com', '$2a$04$OoLqH.irYLgrjaX3bb61GugKrT1AtIZEY82bu3PEcBvRu7x7CJN9a', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 486296279)
+log/test.log:  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 29', 'user-29@example.com', '$2a$04$SAeHnb724DJ/awMlMRkjVuOKfK05BXfN2Dh3ozrSBgZk64HxAWdCe', 't', '2018-03-20 18:37:34 UTC', '2018-03-20 18:37:34', '2018-03-20 18:37:34', 737901126)[0m
+log/test.log:  Parameters: {"user"=>{"name"=>"Michael Example", "phone"=>"michael@example.com"}, "id"=>"762146111"}
+log/test.log:  Parameters: {"user"=>{"name"=>"Michael Example", "phone"=>"michael@example.com"}, "id"=>"762146111"}
+log/test.log:UserTest: test_phone_address_should_be_unique
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1[0m
+log/test.log:  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Example User"], ["phone", "user@example.com"], ["password_digest", "$2a$04$eRU9v/mL8W8lJKjFDPev6.RfM6Z1kZc7QM5eAox2uM/JURQ3OrM5K"], ["created_at", "2018-03-20 18:37:39.876196"], ["updated_at", "2018-03-20 18:37:39.876196"], ["activation_digest", "$2a$04$B7rnL3WU.rq.4DQxZACPO.RmJVqVuH053CDhdlW7TjiXQcta3drR."]]
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('USER@EXAMPLE.COM') LIMIT 1
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1[0m
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1
+log/test.log:UserTest: test_phone_should_not_be_too_long
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com') LIMIT 1
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1[0m
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1
+log/test.log:  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Example User"], ["phone", "user@example.com"], ["password_digest", "$2a$04$UEg6ZKnxIvdhBtDR3SN8peqrclO2Zj1xLQ6XDbGt8wUyNCrBcYWOu"], ["created_at", "2018-03-20 18:37:39.965848"], ["updated_at", "2018-03-20 18:37:39.965848"], ["activation_digest", "$2a$04$IW0tv017Jjd6/l8neOeU0eMOAoy8K.n0UEdJ17sD2NlPWH6hSvDlC"]]
+log/test.log:UserTest: test_phone_should_be_present
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('     ') LIMIT 1[0m
+log/test.log:UserTest: test_phone_validation_should_reject_invalid_addresses
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example,com') LIMIT 1
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user_at_foo.org') LIMIT 1[0m
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user.name@example.') LIMIT 1
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('foo@bar_baz.com') LIMIT 1[0m
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('foo@bar+baz.com') LIMIT 1
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1[0m
+log/test.log:UserTest: test_phone_validation_should_accept_valid_addresses
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('USER@foo.COM') LIMIT 1[0m
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('A_US-ER@foo.bar.org') LIMIT 1
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('first.last@foo.jp') LIMIT 1[0m
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('alice+bob@baz.cn') LIMIT 1
+log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", ""]]
+log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:http://example.com/password_resets/mirwe3OF9Ek1aQVjLLyS-A/edit?phone=michael%40example.com
+log/test.log:If you did not request your password to be reset, please ignore this phone and 
+log/test.log:<a href="http://example.com/password_resets/mirwe3OF9Ek1aQVjLLyS-A/edit?phone=michael%40example.com">Reset password</a>
+log/test.log:If you did not request your password to be reset, please ignore this phone and 
+log/test.log:Started GET "/password_resets/mirwe3OF9Ek1aQVjLLyS-A/edit?phone=" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+log/test.log:  Parameters: {"phone"=>"", "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", ""]]
+log/test.log:Started GET "/password_resets/mirwe3OF9Ek1aQVjLLyS-A/edit?phone=michael%40example.com" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+log/test.log:  Parameters: {"phone"=>"michael@example.com", "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+log/test.log:  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:Started GET "/password_resets/wrong%20token/edit?phone=michael%40example.com" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+log/test.log:  Parameters: {"phone"=>"michael@example.com", "id"=>"wrong token"}
+log/test.log:  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:Started GET "/password_resets/mirwe3OF9Ek1aQVjLLyS-A/edit?phone=michael%40example.com" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+log/test.log:  Parameters: {"phone"=>"michael@example.com", "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+log/test.log:  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"phone"=>"michael@example.com", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE (LOWER("users"."phone") = LOWER('michael@example.com') AND "users"."id" != 762146111) LIMIT 1[0m
+log/test.log:  Parameters: {"phone"=>"michael@example.com", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"phone"=>"michael@example.com", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"mirwe3OF9Ek1aQVjLLyS-A"}
+log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE (LOWER("users"."phone") = LOWER('michael@example.com') AND "users"."id" != 762146111) LIMIT 1
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"", "password"=>"[FILTERED]"}}
+log/test.log:  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", ""]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]"}}
+log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}}
+log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"duchess@example.gov", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "duchess@example.gov"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"user"=>{"name"=>"Foo Bar", "phone"=>"foo@bar.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"762146111"}
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE (LOWER("users"."phone") = LOWER('foo@bar.com') AND "users"."id" != 762146111) LIMIT 1
+log/test.log:  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "name" = ?, "phone" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["name", "Foo Bar"], ["phone", "foo@bar.com"], ["updated_at", "2018-03-20 18:37:40.707053"], ["id", 762146111]]
+log/test.log:  Parameters: {"session"=>{"phone"=>"michael@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "michael@example.com"]]
+log/test.log:  Parameters: {"user"=>{"name"=>"", "phone"=>"user@invalid", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"762146111"}
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE (LOWER("users"."phone") = LOWER('user@invalid') AND "users"."id" != 762146111) LIMIT 1
+log/test.log:  Parameters: {"user"=>{"name"=>"", "phone"=>"user@invalid", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+log/test.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@invalid') LIMIT 1
+log/test.log:  Parameters: {"user"=>{"name"=>"Example User", "phone"=>"user@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+log/test.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('user@example.com') LIMIT 1[0m
+log/test.log:  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Example User"], ["phone", "user@example.com"], ["password_digest", "$2a$04$7nw9J.wniTMkrPNaXKiGmuNPtAHeHIPNtbOMEFWKZT2vlLmJNB3/K"], ["created_at", "2018-03-20 18:37:40.765852"], ["updated_at", "2018-03-20 18:37:40.765852"], ["activation_digest", "$2a$04$TBj0aN/v6yOOifhjbgl.2OYR5JBdFvioqab/H8qbwjNMStLeTy31."]]
+log/test.log:http://example.com/account_activations/MTcREFc2GSlCSwO0JnC11Q/edit?phone=user%40example.com
+log/test.log:<a href="http://example.com/account_activations/MTcREFc2GSlCSwO0JnC11Q/edit?phone=user%40example.com">Activate</a>
+log/test.log:  Parameters: {"session"=>{"phone"=>"user@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+log/test.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "user@example.com"]]
+log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" IS NULL LIMIT 1
+log/test.log:Started GET "/account_activations/MTcREFc2GSlCSwO0JnC11Q/edit?phone=wrong" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+log/test.log:  Parameters: {"phone"=>"wrong", "id"=>"MTcREFc2GSlCSwO0JnC11Q"}
+log/test.log:  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "wrong"]]
+log/test.log:Started GET "/account_activations/MTcREFc2GSlCSwO0JnC11Q/edit?phone=user%40example.com" for 127.0.0.1 at 2018-03-20 18:37:40 +0000
+log/test.log:  Parameters: {"phone"=>"user@example.com", "id"=>"MTcREFc2GSlCSwO0JnC11Q"}
+log/test.log:  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "user@example.com"]]
+log/development.log:  [1m[35m (0.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "phone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+log/development.log:  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_phone" ON "users" ("phone")
+log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sr8My9Sn6aGes9OL5709/DPn+IiTodc5t1qlzqq9RbdgVCboIKp88QaNRCYSN0uEGrFBjIhnUib1QWTehZxj4w==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"abhineetmnnit26@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('abhineetmnnit26@gmail.com') LIMIT 1[0m
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UwynwwZoaL+e3JHiEl0wrI97p1TyW7AWYPajSKhJo2KB543g8mX97wbiBk/n10bUpi0eUOmdNQki7WJYh2iFNg==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"abhineetmnnit26@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('abhineetmnnit26@gmail.com') LIMIT 1
+log/development.log:  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "abhineet bhojak"], ["phone", "abhineetmnnit26@gmail.com"], ["password_digest", "$2a$10$KzRdMUZRuewC0ltBS91cKuqtFiAj1Sb2lWVY6hUTntLp1SZ2Rom.2"], ["created_at", "2018-03-20 19:27:40.570282"], ["updated_at", "2018-03-20 19:27:40.570282"], ["activation_digest", "$2a$10$CwXa8ecx.7tgC9hzzueAMOr3zZDjVH1sPZ5CXzUPyT.a5frvU/by."]]
+log/development.log:https://rails-tutorial-c9-mhartl.c9.io/account_activations/gvlU9rKdLepq6bwugDAMcg/edit?phone=abhineetmnnit26%40gmail.com
+log/development.log:<a href="https://rails-tutorial-c9-mhartl.c9.io/account_activations/gvlU9rKdLepq6bwugDAMcg/edit?phone=abhineetmnnit26%40gmail.com">Activate</a>
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1u6it4KdbedlbEuFUg3u8PCQjQPu4NqBOu8QNrNC2UkEBYiUdpD4t/1S3Cinh5iI2cY0B/UmX5549NEmnGP/HQ==", "session"=>{"phone"=>"abhineetmnnit26@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+log/development.log:  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "abhineetmnnit26@gmail.com"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hV/lTtlx0ONbrkvliD6uYL4CzDNk2JXFda5ybpX8AxVXtM9tLXxFs8OQ3Eh9tNgYl1R1N38eENo3tbN+ut0lQQ==", "user"=>{"name"=>"a", "phone"=>"a@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('a@gmail.com') LIMIT 1
+log/development.log:  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "a"], ["phone", "a@gmail.com"], ["password_digest", "$2a$10$ztCRYYBsmtDMFEHk8vNRq.8/8l5h/SscU7ipCwt8WSqxpII0zex8S"], ["created_at", "2018-03-20 20:10:12.393484"], ["updated_at", "2018-03-20 20:10:12.393484"], ["activation_digest", "$2a$10$NaorbayEOT9s0F.PjK8tFOnAvkcFW6spGJmHUTsOY.8toD1zuk7xa"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+PPjTLu1khT4Z7fNiBS/xU4PkpVRV8HedUIPK0dWBOUqGMlvT7gHRGBZIGB9nsm9Z1krkUqRRME3Wc47aHcisQ==", "session"=>{"phone"=>"a@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+log/development.log:  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "a@gmail.com"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7ymNds2wjaTYB6PcCEl5SFHwLFMFQQrEba97Q+CtdOM9wqdVOb0Y9EA5NHH9ww8weKaVVx6Hj9svtLpTz4xStw==", "session"=>{"phone"=>"abhineetmnnit26@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+log/development.log:  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "abhineetmnnit26@gmail.com"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yVmQYNZZJ8J0O7c11of1PZH+4970YPDnYqv4+MEbQzYbsrpDIlSykuwFIJgjDYNFuKha2u+mdfggsDno7jplYg==", "session"=>{"phone"=>"abhineet.bhojak@tamu.edu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+log/development.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "abhineet.bhojak@tamu.edu"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oJ4EwzStlefuVxI+Zc8KJ6aZt7yW8ZuHyDkTKPI7EhFydS7gwKAAt3ZphZOQRXxfj88OuI03HpiKItI43Ro0RQ==", "user"=>{"name"=>"Sheena Goel", "phone"=>"shinygoyal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('shinygoyal@gmail.com') LIMIT 1[0m
+log/development.log:  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Sheena Goel"], ["phone", "shinygoyal@gmail.com"], ["password_digest", "$2a$10$lV2DXf50B.wQ52cr1I.p3.dmKn/qwt1w.xek942buXUcCLbEB65ui"], ["created_at", "2018-03-21 22:10:52.321026"], ["updated_at", "2018-03-21 22:10:52.321026"], ["activation_digest", "$2a$10$yxrqye5EaDtIabx/OcmrXOUe/z7nN15LGM0sgeADav1sbQXKVMDMC"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mIwnHz0WKTzaptRNht+vzzYeXN52Y3CD5BlTr1/UukxKZw08yRu8bEKYQ+BzVdm3H0jl2m2l9ZymApK/cPWcGA==", "session"=>{"phone"=>"shinygoyal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+log/development.log:  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "shinygoyal@gmail.com"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c9aBOQN5umt/xGFty+pdnQVvYCXRnKiUyQ3n50z5cr+hPasa93QvO+f69sA+YCvlLDnZIcpaLYuLFib3Y9hU6w==", "session"=>{"phone"=>"shinygoyal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+log/development.log:  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1[0m  [["phone", "shinygoyal@gmail.com"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hmZ+I3QERDPk6iKU8f0fYgRpDdtkcrG4Vof8aZqD35lUjVQAgAnRY3zUtTkEd2kaLT+033+0NKcUnD15taL5zQ==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('') LIMIT 1[0m
+log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hqeiILpjbq8FiMn+TkHdvLWdR+bxSBRnQyS5LgFneK9UTIgDTm77/522XlO7y6vEnMv+4uqOkXgBP3g+LkZe+w==", "user"=>{"name"=>"a", "phone"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('') LIMIT 1[0m
+log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+log/development.log:            WHERE name='index_users_on_phone' AND type='index'
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Zoi4lGJyX8eq70GaxDKu+QW9gX0LwRn0zABIVacCeha0Y5K3ln/KlzLR1jcxuNiBLOs4eRAHnOuOG4lFiCNcQg==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"1234552343@gmail.cpm", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('1234552343@gmail.cpm') LIMIT 1[0m
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FvZR+HnlE8X+lvhGfxWI7pYKCo1TSPOYoX6U3vFct2rEHXvbjeiGlWaob+uKn/6Wv1yziUiOdofjZVXO3n2RPg==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"12333@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('12333@gmail.com') LIMIT 1[0m
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/mje7i7Lz3RVMDrRpx+kbsNpEQnzKtNkEfhNn17zvRUsg/TN2sZaJM0OrXxSldIW6j+oDejsVntT44yPcdKbQQ==", "user"=>{"name"=>"rsjgj", "phone"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('') LIMIT 1[0m
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7C2bBv4/MF0RW05EftvpDniAYxIkonOaq8GOKVmPPjU+xrElCjKlDYll2emLUZ92UdbaFj9k9oXp2k85dq4YYQ==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"121111111", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('121111111') LIMIT 1[0m
+log/development.log:  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "abhineet bhojak"], ["phone", "121111111"], ["password_digest", "$2a$10$tjdYmtuJ/tJtvY50P9G5.u4N8wWLy8iB/KVZVgBOIW4oMUsyXrQZW"], ["created_at", "2018-03-23 17:37:02.272434"], ["updated_at", "2018-03-23 17:37:02.272434"], ["activation_digest", "$2a$10$1TJAeJedbdsxf.KrvJIWiOXJDmCXQuOdTl8u8Qb2S0PxDE..FnLHG"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bI1AKkLICKpVCiH4hHq2+54Ktsh2heSE0b9PxjezyTm+ZmoJtsWd+s00tlVx8MCDt1wPzG1DYZuTpI7WGJLvbQ==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"1234567890", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('1234567890') LIMIT 1[0m
+log/development.log:  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "phone", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "abhineet bhojak"], ["phone", "1234567890"], ["password_digest", "$2a$10$bmF7jx3jnylHjsCLHryaneetbBtP3HZXAr6OeJRZPdyYVnnacD3KC"], ["created_at", "2018-03-23 17:37:49.502660"], ["updated_at", "2018-03-23 17:37:49.502660"], ["activation_digest", "$2a$10$x25b0fsT2ObkRu5bm4QVbe2ard6wwFXBuqb958TVTuwM/w/hVpubK"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2PV1NKSh9cLq70bBdMRobPWVYkbeZzQXAmsdY+9+X4gKHl8XUKxgknLR0WyBTh4U3MPbQsWhsQhAcNxzwF953A==", "session"=>{"phone"=>"1234567890", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+log/development.log:  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone" = ? LIMIT 1  [["phone", "1234567890"]]
+log/development.log:  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eApcC+s1RJU3DIqHJY84ZMq7E3zUE/g+i0pyk0lb2gOq4XYoHzjRxa8yHSrQBU4c4+2qeM/VfSHJUbODZnr8Vw==", "user"=>{"name"=>"abhineet bhojak", "phone"=>"12333@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+log/development.log:  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."phone") = LOWER('12333@gmail.com') LIMIT 1
+test/test_helper.rb:      post login_path, session: { phone:       user.phone,
+test/mailers/previews/user_mailer_preview.rb:# Preview all phones at http://localhost:3000/rails/mailers/user_mailer
+test/mailers/previews/user_mailer_preview.rb:  # Preview this phone at http://localhost:3000/rails/mailers/user_mailer/account_activation
+test/mailers/previews/user_mailer_preview.rb:  # Preview this phone at http://localhost:3000/rails/mailers/user_mailer/password_reset
+test/mailers/user_mailer_test.rb:    assert_equal [user.phone], mail.to
+test/mailers/user_mailer_test.rb:    assert_match CGI::escape(user.phone), mail.body.encoded
+test/mailers/user_mailer_test.rb:    assert_equal [user.phone], mail.to
+test/mailers/user_mailer_test.rb:    assert_match CGI::escape(user.phone), mail.body.encoded
+test/models/user_test.rb:    @user = User.new(name: "Example User", phone: "user@example.com",
+test/models/user_test.rb:  test "phone should be present" do
+test/models/user_test.rb:    @user.phone = "     "
+test/models/user_test.rb:  test "phone should not be too long" do
+test/models/user_test.rb:    @user.phone = "a" * 244 + "@example.com"
+test/models/user_test.rb:  test "phone validation should accept valid addresses" do
+test/models/user_test.rb:      @user.phone = valid_address
+test/models/user_test.rb:  test "phone validation should reject invalid addresses" do
+test/models/user_test.rb:      @user.phone = invalid_address
+test/models/user_test.rb:  test "phone address should be unique" do
+test/models/user_test.rb:    duplicate_user.phone = @user.phone.upcase
+test/controllers/users_controller_test.rb:    patch :update, id: @user, user: { name: @user.name, phone: @user.phone }
+test/controllers/users_controller_test.rb:    patch :update, id: @user, user: { name: @user.name, phone: @user.phone }
+test/fixtures/users.yml:  phone: michael@example.com
+test/fixtures/users.yml:  phone: duchess@example.gov
+test/fixtures/users.yml:  phone: hands@example.gov
+test/fixtures/users.yml:  phone: boss@example.gov
+test/fixtures/users.yml:  phone: <%= "user-#{n}@example.com" %>
+test/integration/users_login_test.rb:    post login_path, session: { phone: "", password: "" }
+test/integration/users_login_test.rb:    post login_path, session: { phone: @user.phone, password: 'password' }
+test/integration/password_resets_test.rb:    # Invalid phone
+test/integration/password_resets_test.rb:    post password_resets_path, password_reset: { phone: "" }
+test/integration/password_resets_test.rb:    # Valid phone
+test/integration/password_resets_test.rb:    post password_resets_path, password_reset: { phone: @user.phone }
+test/integration/password_resets_test.rb:    # Wrong phone
+test/integration/password_resets_test.rb:    get edit_password_reset_path(user.reset_token, phone: "")
+test/integration/password_resets_test.rb:    get edit_password_reset_path(user.reset_token, phone: user.phone)
+test/integration/password_resets_test.rb:    # Right phone, wrong token
+test/integration/password_resets_test.rb:    get edit_password_reset_path('wrong token', phone: user.phone)
+test/integration/password_resets_test.rb:    # Right phone, right token
+test/integration/password_resets_test.rb:    get edit_password_reset_path(user.reset_token, phone: user.phone)
+test/integration/password_resets_test.rb:    assert_select "input[name=phone][type=hidden][value=?]", user.phone
+test/integration/password_resets_test.rb:          phone: user.phone,
+test/integration/password_resets_test.rb:          phone: user.phone,
+test/integration/password_resets_test.rb:          phone: user.phone,
+test/integration/users_signup_test.rb:                               phone: "user@invalid",
+test/integration/users_signup_test.rb:                               phone: "user@example.com",
+test/integration/users_signup_test.rb:    get edit_account_activation_path(user.activation_token, phone: 'wrong')
+test/integration/users_signup_test.rb:    get edit_account_activation_path(user.activation_token, phone: user.phone)
+test/integration/users_edit_test.rb:                                    phone: "user@invalid",
+test/integration/users_edit_test.rb:    phone = "foo@bar.com"
+test/integration/users_edit_test.rb:                                    phone: phone,
+test/integration/users_edit_test.rb:    assert_equal phone, @user.phone
+app/views/password_resets/new.html.erb:<% provide(:title, 'Forgot password') %>
+app/views/password_resets/new.html.erb:<h1>Forgot password</h1>

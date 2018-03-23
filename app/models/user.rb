@@ -9,11 +9,11 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
   attr_accessor :remember_token, :activation_token, :reset_token
-  before_save   :downcase_email
+  before_save   :downcase_phone
   before_create :create_activation_digest
   validates :name,  presence: true, length: { maximum: 50 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
+  VALID_EMAIL_REGEX = /[0-9]{10}/i
+  validates :phone, presence: true, length: { maximum: 10 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
@@ -55,8 +55,8 @@ class User < ActiveRecord::Base
     update_attribute(:activated_at, Time.zone.now)
   end
 
-  # Sends activation email.
-  def send_activation_email
+  # Sends activation phone.
+  def send_activation_phone
     #UserMailer.account_activation(self).deliver_now
     update_attribute(:activated,    true)
     update_attribute(:activated_at, Time.zone.now)
@@ -69,8 +69,8 @@ class User < ActiveRecord::Base
     update_attribute(:reset_sent_at, Time.zone.now)
   end
 
-  # Sends password reset email.
-  def send_password_reset_email
+  # Sends password reset phone.
+  def send_password_reset_phone
     UserMailer.password_reset(self).deliver_now
   end
 
@@ -104,9 +104,9 @@ class User < ActiveRecord::Base
 
   private
 
-    # Converts email to all lower-case.
-    def downcase_email
-      self.email = email.downcase
+    # Converts phone to all lower-case.
+    def downcase_phone
+      self.phone = phone.downcase
     end
 
     # Creates and assigns the activation token and digest.

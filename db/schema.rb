@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20141111214811) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "email"
+    t.string   "phone"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "password_digest"
@@ -50,6 +50,6 @@ ActiveRecord::Schema.define(version: 20141111214811) do
     t.datetime "reset_sent_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["phone"], name: "index_users_on_phone", unique: true
 
 end

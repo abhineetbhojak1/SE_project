@@ -7,10 +7,10 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:password_reset][:email].downcase)
+    @user = User.find_by(phone: params[:password_reset][:phone].downcase)
     if @user
       @user.create_reset_digest
-      @user.send_password_reset_email
+      @user.send_password_reset_phone
       flash[:info] = "Email sent with password reset instructions"
       redirect_to root_url
     else
@@ -44,7 +44,7 @@ class PasswordResetsController < ApplicationController
     # Before filters
 
     def get_user
-      @user = User.find_by(email: params[:email])
+      @user = User.find_by(phone: params[:phone])
     end
 
     # Confirms a valid user.
